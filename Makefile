@@ -1,16 +1,9 @@
-.PHONY: all deps clean build validate
+.PHONY: all deps validate
 
-all: clean deps build validate
+all: deps validate
 
 deps:
 	pip install -r requirements.txt
 
-clean:
-	rm -rf build
-
-build:
-	mkdir -p build
-	cp -R src/* build/
-
 validate:
-	./bin/validate build/
+	./bin/validate src/
