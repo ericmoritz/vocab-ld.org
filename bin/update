@@ -1,0 +1,2 @@
+curl "https://raw.githubusercontent.com/ericmoritz/play-instathread/master/rdf/contexts/instathread.jsonld" > src/contexts/instathread.jsonld
+curl "https://raw.githubusercontent.com/ericmoritz/play-instathread/master/rdf/vocab/instathread.jsonld" > src/vocabs/instathread.jsonld
