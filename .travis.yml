@@ -10,6 +10,6 @@ deploy:
     secure: bAJNJUBgNUo9O5dWAgmumO67v3esn7lnikaZHHbD98PLuRHjuL3snKYpl2Yxvpvrtl1dpDUpf6hKnXdagy3DJjtkcbUXohRKnahdV6RD8oUy0UJSvS/7FiHpjVYkprUxYwnSo8mDFWSSW7Ebn0hhw4ntnm3ov8Bj0VQwyRdV5Q8=
   bucket: vocab-ld.org
   local-dir: build
-  acl: !ruby/string:HighLine::String public_read
+  acl: public_read
   on:
     repo: ericmoritz/vocab-ld.org
