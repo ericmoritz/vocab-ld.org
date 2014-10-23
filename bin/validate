@@ -21,20 +21,18 @@ for dirpath, dirnames, filenames in os.walk(sys.argv[1]):
     for filename in filenames:
         filename = os.path.join(dirpath, filename)
         format = better_guess_format(filename)
-
+        url = urllib.pathname2url(filename)
 
         if format:
-            logger.info("{filename} detected as {format}".format(**locals()))
-
             g = rdflib.Graph()
             try:
                 g.parse(
-                    location=urllib.pathname2url(filename),
+                    location=url,
                     format=format
                 )
+                logger.info("{filename!r} is valid {format!r}".format(**locals()))
             except Exception, err:
-                print("Error parsing {filename}".format(**locals()))
-                print(str(err))
+                logger.exception("Error parsing {filename}".format(**locals()))
                 hasError = True
         else:
             logger.info("{filename} has unknown format".format(**locals()))

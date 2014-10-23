@@ -13,4 +13,4 @@ build:
 	cp -R src/* build/
 
 validate:
-	./bin/validate src/
+	./bin/validate build/
