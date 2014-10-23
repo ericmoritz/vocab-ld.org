@@ -1,9 +1,9 @@
 .PHONY: all deps clean build validate
 
-all: clean build validate
+all: clean deps build validate
 
 deps:
-	true
+	pip install -r requirements.txt
 
 clean:
 	rm -rf build
@@ -13,5 +13,4 @@ build:
 	cp -R src/* build/
 
 validate:
-	# TODO
-	true
+	./bin/validate src/vocabs/*.{ttl,xml,rdf,owl,json,jsonld}
