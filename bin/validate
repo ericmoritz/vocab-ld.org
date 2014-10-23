@@ -3,15 +3,40 @@ import sys
 import rdflib
 from rdflib.util import guess_format
 import urllib
+import os
+from logging import basicConfig, getLogger, INFO
 
-for filename in sys.argv[1:]:
-    g = rdflib.Graph()
-    try:
-        g.parse(
-            location=urllib.pathname2url(filename),
-            format=guess_format(filename)
-        )
-    except Exception, err:
-        print("Error parsing {filename}".format(**locals()))
-        print(str(err))
-        sys.exit(-1)
+basicConfig(level=INFO)
+logger = getLogger()
+
+def better_guess_format(filename):
+    root, ext = os.path.splitext(filename)
+    if ext in {".json", ".jsonld"}:
+        return "json-ld"
+    else:
+        return guess_format(filename)
+
+hasError = False
+for dirpath, dirnames, filenames in os.walk(sys.argv[1]):
+    for filename in filenames:
+        filename = os.path.join(dirpath, filename)
+        format = better_guess_format(filename)
+
+
+        if format:
+            logger.info("{filename} detected as {format}".format(**locals()))
+
+            g = rdflib.Graph()
+            try:
+                g.parse(
+                    location=urllib.pathname2url(filename),
+                    format=format
+                )
+            except Exception, err:
+                print("Error parsing {filename}".format(**locals()))
+                print(str(err))
+                hasError = True
+        else:
+            logger.info("{filename} has unknown format".format(**locals()))
+if hasError:
+    sys.exit(-1)
