@@ -10,5 +10,6 @@ deploy:
     secure: JrBiuoB8Hgmg72QXB0KLSUiB14Dcip5iJX5GR6OW6ORLHCy24cUhnGBsoGNexvq8TWHPDbLxaxRiQvv5YtsvdknEXpSqdn380iLM+7HrJS7X4ePA4yWTvbnW+7CIZkmeJtp2eyvg9gUD4mKOYB/SYSteItEasVGPMDrGJCE2HZ0=
   bucket: rdf.vocab-ld.org
   acl: public_read
+  local-dir: src
   on:
     repo: ericmoritz/vocab-ld.org
