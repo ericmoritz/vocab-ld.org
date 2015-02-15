@@ -5,11 +5,10 @@ install: make deps
 script: make all
 deploy:
   provider: s3
-  access_key_id: AKIAJUOL2JDEXSEYFEPQ
+  access_key_id: AKIAJ6LYU74WC2KXL4UA
   secret_access_key:
-    secure: bAJNJUBgNUo9O5dWAgmumO67v3esn7lnikaZHHbD98PLuRHjuL3snKYpl2Yxvpvrtl1dpDUpf6hKnXdagy3DJjtkcbUXohRKnahdV6RD8oUy0UJSvS/7FiHpjVYkprUxYwnSo8mDFWSSW7Ebn0hhw4ntnm3ov8Bj0VQwyRdV5Q8=
+    secure: JrBiuoB8Hgmg72QXB0KLSUiB14Dcip5iJX5GR6OW6ORLHCy24cUhnGBsoGNexvq8TWHPDbLxaxRiQvv5YtsvdknEXpSqdn380iLM+7HrJS7X4ePA4yWTvbnW+7CIZkmeJtp2eyvg9gUD4mKOYB/SYSteItEasVGPMDrGJCE2HZ0=
   bucket: rdf.vocab-ld.org
-  local-dir: src
   acl: public_read
   on:
     repo: ericmoritz/vocab-ld.org
